@@ -1,0 +1,305 @@
+/* Pumpkin watch: decorations stay behind the live dashboard content. */
+#dashboard-sidebar {
+  --pumpkin-accent: #ff953f;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  gap: 1rem;
+  padding: 1.5rem 1.125rem;
+  border-right: 2px solid var(--pumpkin-accent);
+  background:
+    radial-gradient(ellipse at 50% 0%, #48302455, transparent 47%),
+    radial-gradient(ellipse at 50% 100%, #7e3d1638, transparent 34%),
+    #15151d;
+  color: #faf8f4;
+}
+
+#dashboard-sidebar::after {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--pumpkin-accent), transparent);
+  pointer-events: none;
+}
+
+#dashboard-sidebar > :not(.sidebar-decoration) {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+#dashboard-sidebar .sidebar-brand { padding-top: .5rem; }
+#dashboard-logo { width: 100%; max-width: 12rem; max-height: 12rem; object-fit: contain; }
+
+#dashboard-sidebar .sidebar-season {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  margin-top: 1.125rem;
+  color: var(--pumpkin-accent);
+  font-size: .6875rem;
+  font-weight: 700;
+  letter-spacing: .125rem;
+  line-height: 1.5;
+}
+
+#dashboard-sidebar .sidebar-season span {
+  width: 1.25rem;
+  height: 1px;
+  background: currentColor;
+  opacity: .5;
+}
+
+#dashboard-sidebar #toolbar-weather-widget {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  padding: .75rem 0;
+}
+
+#dashboard-sidebar .sidebar-weather-label {
+  margin-bottom: .875rem;
+  color: #b5a6a0;
+  font-size: .6875rem;
+  font-weight: 700;
+  letter-spacing: .125rem;
+  line-height: 1.5;
+}
+
+#dashboard-sidebar #weather-icon-container {
+  width: 5.25rem;
+  height: 5.25rem;
+  flex-shrink: 0;
+  border: 1px solid #ff953f33;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ff953f12, transparent 72%);
+}
+
+#dashboard-sidebar #weather-icon-container svg { width: 3.25rem; height: 3.25rem; }
+#dashboard-sidebar #weather-temp { color: #fff6ed; font-variant-numeric: tabular-nums; }
+#dashboard-sidebar #weather-condition { max-width: 100%; color: #e3d7cf; overflow-wrap: anywhere; }
+#dashboard-sidebar #weather-location { max-width: 100%; color: #f7eee8; overflow-wrap: anywhere; }
+#dashboard-sidebar #weather-high-low { color: #c5b4aa; }
+#dashboard-sidebar #sidebar-alert-display { padding: 0; margin: 0; }
+#dashboard-sidebar .sidebar-clock-group { margin-top: auto; }
+
+#dashboard-sidebar .sidebar-clock-rule {
+  height: 1px;
+  margin: .875rem 0 .75rem;
+  background: linear-gradient(90deg, transparent, #ff953f66, transparent);
+}
+
+#dashboard-sidebar #clock-container { width: 100%; height: auto; min-height: 7rem; }
+#dashboard-sidebar #dashboard-time { color: #fff6ed; }
+#dashboard-sidebar #dashboard-date { color: #d9bfae; }
+#dashboard-sidebar #dashboard-version {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  color: #ad998b;
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 400;
+  letter-spacing: .03em;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* Use the existing smaller bottom gap without changing toolbar layout. */
+@media (max-height: 960px), (max-width: 767px) {
+  #dashboard-sidebar #dashboard-version { top: calc(100% + 1px); }
+}
+
+.sidebar-decoration { pointer-events: none; user-select: none; }
+
+#dashboard-sidebar .sidebar-cobweb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 95px;
+  height: 95px;
+  background: repeating-radial-gradient(circle at 0 0, transparent 0 17px, #e9dace24 18px 18.7px, transparent 19.7px 32px);
+}
+
+#dashboard-sidebar .sidebar-cobweb::before,
+#dashboard-sidebar .sidebar-cobweb::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 134px;
+  height: 1px;
+  background: #e9dace24;
+  transform-origin: left center;
+  transform: rotate(45deg);
+}
+
+#dashboard-sidebar .sidebar-cobweb::after { transform: rotate(23deg); }
+#dashboard-sidebar .sidebar-cobweb-right { left: auto; right: 0; width: 73px; height: 73px; opacity: .6; transform: scaleX(-1); }
+
+#dashboard-sidebar .sidebar-spider {
+  position: absolute;
+  top: 0;
+  left: 27px;
+  width: 1px;
+  height: 110px;
+  background: #e9dace48;
+}
+
+#dashboard-sidebar .sidebar-spider > span {
+  position: absolute;
+  bottom: -6px;
+  left: -4px;
+  width: 9px;
+  height: 12px;
+  border-radius: 50%;
+  background: #b59c8a;
+}
+
+#dashboard-sidebar .sidebar-spider > span::before,
+#dashboard-sidebar .sidebar-spider > span::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: -5px;
+  width: 18px;
+  height: 7px;
+  border-top: 1px solid #b59c8a;
+  border-bottom: 1px solid #b59c8a;
+  transform: rotate(22deg);
+}
+
+#dashboard-sidebar .sidebar-spider > span::after { transform: rotate(-22deg); }
+
+#dashboard-sidebar .sidebar-bat {
+  position: absolute;
+  top: 110px;
+  right: 9px;
+  width: 40px;
+  height: 21px;
+  background: #05070e;
+  transform: rotate(-17deg);
+  clip-path: polygon(0 3%, 17% 16%, 29% 5%, 33% 40%, 44% 48%, 46% 20%, 50% 31%, 55% 19%, 57% 47%, 67% 40%, 72% 5%, 84% 16%, 100% 3%, 91% 58%, 79% 49%, 70% 77%, 59% 70%, 50% 100%, 41% 70%, 30% 77%, 21% 49%, 9% 58%);
+}
+
+#dashboard-sidebar .sidebar-pumpkin-patch {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 7px;
+  height: 58px;
+}
+
+#dashboard-sidebar .sidebar-pumpkin {
+  position: relative;
+  width: 56px;
+  height: 44px;
+  flex-shrink: 0;
+  border: 1px solid #ffb65e88;
+  border-radius: 43% 43% 44% 44%;
+  background:
+    radial-gradient(ellipse at 50% 48%, #ffa247 0 27%, transparent 29%),
+    radial-gradient(ellipse at 23% 50%, #db691c 0 47%, transparent 49%),
+    radial-gradient(ellipse at 77% 50%, #e77d23 0 47%, transparent 49%),
+    #f18425;
+  box-shadow: 0 0 20px #ff721518, inset 0 -6px 10px #73350e50;
+}
+
+#dashboard-sidebar .sidebar-pumpkin-stem {
+  position: absolute;
+  top: -8px;
+  left: 45%;
+  width: 8px;
+  height: 10px;
+  border-radius: 3px 2px 0 0;
+  background: #687849;
+  transform: rotate(13deg);
+}
+
+#dashboard-sidebar .sidebar-pumpkin-eyes::before,
+#dashboard-sidebar .sidebar-pumpkin-eyes::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 11px;
+  width: 10px;
+  height: 10px;
+  background: #37210f;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+#dashboard-sidebar .sidebar-pumpkin-eyes::after { left: auto; right: 11px; }
+
+#dashboard-sidebar .sidebar-pumpkin-mouth {
+  position: absolute;
+  top: 27px;
+  left: 16px;
+  width: 24px;
+  height: 9px;
+  background: #37210f;
+  clip-path: polygon(0 0, 24% 25%, 24% 0, 40% 0, 40% 35%, 68% 35%, 68% 0, 100% 0, 83% 80%, 50% 100%, 17% 80%);
+}
+
+#dashboard-sidebar .sidebar-pumpkin-small { margin-right: -9px; transform: rotate(-10deg) scale(.77); transform-origin: bottom center; }
+#dashboard-sidebar .sidebar-pumpkin-large { transform: scale(1.04); transform-origin: bottom center; }
+#dashboard-sidebar .sidebar-pumpkin-tiny { margin-left: -12px; transform: rotate(10deg) scale(.62); transform-origin: bottom center; }
+
+/* Give active weather alerts priority over decorative space. */
+#dashboard-sidebar:has(#sidebar-alert-display:not(.hidden)) .sidebar-pumpkin-patch { display: none; }
+#dashboard-sidebar:has(#sidebar-alert-display:not(.hidden)) #dashboard-logo { max-height: 6rem; }
+#dashboard-sidebar:has(#sidebar-alert-display:not(.hidden)) #weather-icon-container { width: 3.5rem; height: 3.5rem; }
+#dashboard-sidebar:has(#sidebar-alert-display:not(.hidden)) #weather-icon-container svg { width: 2.5rem; height: 2.5rem; }
+
+@media (min-width: 768px) and (max-height: 960px) {
+  #dashboard-sidebar { gap: .625rem; padding: 1rem 1.125rem; }
+  #dashboard-logo { max-height: 7rem; }
+  #dashboard-sidebar .sidebar-season { margin-top: .625rem; }
+  #dashboard-sidebar #toolbar-weather-widget { padding: .25rem 0; }
+  #dashboard-sidebar .sidebar-weather-label { margin-bottom: .5rem; }
+  #dashboard-sidebar #weather-icon-container { width: 4rem; height: 4rem; }
+  #dashboard-sidebar #weather-icon-container svg { width: 2.75rem; height: 2.75rem; }
+  #dashboard-sidebar #weather-temp { font-size: 3.5rem; }
+  #dashboard-sidebar #weather-condition { font-size: 1.25rem; }
+  #dashboard-sidebar #weather-location { font-size: 1.125rem; }
+  #dashboard-sidebar .sidebar-pumpkin-patch { height: 42px; }
+  #dashboard-sidebar .sidebar-pumpkin { transform: scale(.8); transform-origin: bottom center; }
+}
+
+@media (min-width: 768px) and (max-height: 760px) {
+  #dashboard-logo { max-height: 5rem; }
+  #dashboard-sidebar .sidebar-pumpkin-patch,
+  #dashboard-sidebar .sidebar-weather-label { display: none; }
+  #dashboard-sidebar #weather-icon-container { width: 3rem; height: 3rem; }
+  #dashboard-sidebar #weather-icon-container svg { width: 2.25rem; height: 2.25rem; }
+  #dashboard-sidebar:has(#sidebar-alert-display:not(.hidden)) #dashboard-logo { max-height: 4rem; }
+}
+
+@media (max-width: 767px) {
+  #dashboard-sidebar { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem; padding: 1rem; border-right: 0; border-bottom: 2px solid var(--pumpkin-accent); }
+  #dashboard-sidebar .sidebar-brand { grid-column: 1; grid-row: 1; min-width: 0; padding-top: 0; }
+  #dashboard-logo { max-height: 5rem; }
+  #dashboard-sidebar .sidebar-season { margin-top: .5rem; letter-spacing: .0625rem; }
+  #dashboard-sidebar #toolbar-weather-widget { grid-column: 2; grid-row: 1 / span 2; min-width: 0; padding: 0; }
+  #dashboard-sidebar #weather-icon-container { width: 3.5rem; height: 3.5rem; }
+  #dashboard-sidebar #weather-icon-container svg { width: 2.5rem; height: 2.5rem; }
+  #dashboard-sidebar #weather-temp { font-size: 2.75rem; }
+  #dashboard-sidebar #weather-condition { font-size: 1rem; }
+  #dashboard-sidebar #weather-location { font-size: 1rem; }
+  #dashboard-sidebar #weather-high-low { font-size: .875rem; }
+  #dashboard-sidebar .sidebar-clock-group { grid-column: 1; grid-row: 2; margin: 0; min-width: 0; }
+  #dashboard-sidebar .sidebar-pumpkin-patch,
+  #dashboard-sidebar .sidebar-clock-rule { display: none; }
+  #dashboard-sidebar #clock-container { min-height: 5rem; }
+  #dashboard-sidebar #dashboard-time { font-size: clamp(1.5rem, 4.8vw, 2.75rem); }
+  #dashboard-sidebar #dashboard-date { font-size: clamp(1rem, 3vw, 1.25rem); }
+  #dashboard-sidebar #sidebar-alert-display { grid-column: 1 / -1; grid-row: 3; }
+  #dashboard-sidebar .sidebar-bat { top: 10px; }
+}
