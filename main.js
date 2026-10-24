@@ -38,6 +38,7 @@ function createWindow() {
     kiosk: true, 
     icon: path.join(__dirname, 'assets', '256.ico'),
     webPreferences: {
+      additionalArguments: [`--dashboard-version=${app.getVersion()}`],
       preload: path.join(__dirname, 'preload.js'),
       mediaPlaybackRequiresUserGesture: false,
       nodeIntegration: false, 

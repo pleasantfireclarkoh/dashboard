@@ -48,16 +48,23 @@
       white-space: normal;
     }
   </style>
+  <link rel="stylesheet" href="./assets/pumpkin-watch.css">
 </head>
 <body class="bg-gray-900 text-white flex flex-col h-screen w-full overflow-hidden cursor-none">
 
   <div class="flex-grow flex flex-col md:flex-row min-h-0 transition-all duration-500 ease-in-out" id="main-content-area">
-    <aside class="w-full md:w-64 bg-gray-800 text-white flex md:flex-col justify-around md:justify-between items-center p-4 md:p-5 flex-shrink-0 z-20 shadow-lg">
-      <div class="flex flex-col items-center text-center">
-        <img id="dashboard-logo" src="logo.png" alt="Harmony Township Logo" class="w-40 md:w-60 h-auto rounded-lg" onerror="this.style.display='none'">
+    <aside id="dashboard-sidebar" class="w-full md:w-64 bg-gray-800 text-white flex md:flex-col justify-around md:justify-between items-center p-4 md:p-5 flex-shrink-0 z-20 shadow-lg">
+      <div class="sidebar-decoration sidebar-cobweb" aria-hidden="true"></div>
+      <div class="sidebar-decoration sidebar-cobweb sidebar-cobweb-right" aria-hidden="true"></div>
+      <div class="sidebar-decoration sidebar-spider" aria-hidden="true"><span></span></div>
+      <div class="sidebar-decoration sidebar-bat" aria-hidden="true"></div>
+      <div class="sidebar-brand flex flex-col items-center text-center">
+        <img id="dashboard-logo" src="logo.png" alt="Department logo" class="w-40 md:w-60 h-auto rounded-lg" onerror="this.style.display='none'">
+        <div class="sidebar-season"><span aria-hidden="true"></span>HALLOWEEN<span aria-hidden="true"></span></div>
       </div>
 
       <div id="toolbar-weather-widget" class="text-center">
+          <p class="sidebar-weather-label">LOCAL WEATHER</p>
           <div id="weather-icon-container" class="w-24 h-24 mx-auto mb-2 flex items-center justify-center">
               <i data-feather="loader" class="animate-spin text-blue-300 w-16 h-16"></i>
           </div>
@@ -70,9 +77,18 @@
       <div id="sidebar-alert-display" class="w-full hidden px-2 my-2 transition-all duration-300">
       </div>
       
-      <div id="clock-container" class="w-48 md:w-full h-28 transition-all duration-300 ease-in-out" role="timer" aria-label="Current date and time">
+      <div class="sidebar-clock-group">
+        <div class="sidebar-decoration sidebar-pumpkin-patch" aria-hidden="true">
+          <div class="sidebar-pumpkin sidebar-pumpkin-small"><span class="sidebar-pumpkin-stem"></span><span class="sidebar-pumpkin-eyes"></span><span class="sidebar-pumpkin-mouth"></span></div>
+          <div class="sidebar-pumpkin sidebar-pumpkin-large"><span class="sidebar-pumpkin-stem"></span><span class="sidebar-pumpkin-eyes"></span><span class="sidebar-pumpkin-mouth"></span></div>
+          <div class="sidebar-pumpkin sidebar-pumpkin-tiny"><span class="sidebar-pumpkin-stem"></span><span class="sidebar-pumpkin-eyes"></span><span class="sidebar-pumpkin-mouth"></span></div>
+        </div>
+        <div class="sidebar-clock-rule" aria-hidden="true"></div>
+        <div id="clock-container" class="w-48 md:w-full h-28 transition-all duration-300 ease-in-out" role="timer" aria-label="Current date and time">
           <time id="dashboard-time">--:--:--</time>
           <div id="dashboard-date">Loading date...</div>
+        </div>
+        <div id="dashboard-version"></div>
       </div>
     </aside>
 
